@@ -44,14 +44,33 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY .  ${HOME}/
-RUN mamba env update -n base -f ${HOME}/environment.yml
-RUN mamba env create --name iuc04 ${HOME}/iuc04-demonstrator/binder/environment.yml
-RUN mamba env create --name iuc09 ${HOME}/iuc09_demonstrator/binder/environment.yml
-RUN mamba env create --name iuc17 ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml
-RUN mamba env create --name iuc17 ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml
-RUN mamba env create --name exp_wf_demo ${HOME}/experimental_workflow_demo/binder/environment.yml
-RUN mamba clean --all -f -y && \
-RUN mamba list
+RUN mamba env update -n base -f ${HOME}/environment.yml && \
+    mamba env create --name iuc04 ${HOME}/iuc04-demonstrator/binder/environment.yml && \
+    mamba env create --name iuc09 ${HOME}/iuc09_demonstrator/binder/environment.yml && \
+    mamba env create --name iuc17 ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml && \
+    mamba env create --name iuc17 ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml && \
+    mamba env create --name exp_wf_demo ${HOME}/experimental_workflow_demo/binder/environment.yml && \
+    mamba clean --all -f -y && \
+    mamba list
+
+WORKDIR ${HOME}/iuc04-demonstrator/
+RUN bash binder/download_and_install_dataset.sh
+
+
+WORKDIR ${HOME}
+RUN mv iuc09_demonstrator/binder/.pyiron . && \
+    iuc09_demonstrator/pyiron . && \
+    chmod u+x pyiron/resources/paraprobe-ranger/bin/run_paraprobe-ranger_1.0.3_mpi.sh && \
+    chmod u+x pyiron/resources/paraprobe-ranger/bin/run_paraprobe-ranger_1.0.3.sh && \
+    chmod u+x pyiron/resources/paraprobe-distancer/bin/run_paraprobe-distancer_1.0.3_mpi.sh && \
+    chmod u+x pyiron/resources/paraprobe-distancer/bin/run_paraprobe-distancer_1.0.3.sh && \
+    chmod u+x pyiron/resources/paraprobe-surfacer/bin/run_paraprobe-surfacer_1.0.3_mpi.sh && \
+    chmod u+x pyiron/resources/paraprobe-surfacer/bin/run_paraprobe-surfacer_1.0.3.sh && \
+    chmod u+x pyiron/resources/paraprobe-tessellator/bin/run_paraprobe-tessellator_1.0.3_mpi.sh && \
+    chmod u+x pyiron/resources/paraprobe-tessellator/bin/run_paraprobe-tessellator_1.0.3.sh && \
+    chmod u+x pyiron/resources/paraprobe-nanochem/bin/run_paraprobe-nanochem_1.0.3_mpi.sh && \
+    chmod u+x pyiron/resources/paraprobe-nanochem/bin/run_paraprobe-nanochem_1.0.3.sh
+
 
 # Fix permissions on /etc/jupyter as root
 USER root
