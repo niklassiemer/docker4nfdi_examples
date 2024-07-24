@@ -1,0 +1,15 @@
+[submodule "nfdi_demonstrators/IUC17_demonstrator"]
+	path = nfdi_demonstrators/IUC17_demonstrator_environment
+	url = https://gitlab.mpcdf.mpg.de/pyiron/IUC17_demonstrator.git
+[submodule "nfdi_demonstrators/iuc04-demonstrator"]
+	path = nfdi_demonstrators/iuc04-demonstrator
+	url = https://gitlab.mpcdf.mpg.de/pyiron/iuc04-demonstrator.git
+[submodule "nfdi_demonstrators/experimental_workflow_demo"]
+	path = nfdi_demonstrators/experimental_workflow_demo
+	url = https://gitlab.mpcdf.mpg.de/pyiron/experimental_workflow_demo.git
+[submodule "nfdi_demonstrators/iuc09_demonstrator"]
+	path = nfdi_demonstrators/iuc09_demonstrator
+	url = https://gitlab.mpcdf.mpg.de/pyiron/iuc09_demonstrator.git
+[submodule "iuc17_demo_notebooks"]
+	path = nfdi_demonstrators/iuc17_demonstrator
+	url = https://git.rwth-aachen.de/nfdi-matwerk/ta-oms/iuc17_demonstrator.git

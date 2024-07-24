@@ -1,0 +1,15 @@
+name: Docker Testing
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -t pyiron/nfdi_demonstrators:latest base/
+      - run: docker tag pyiron/nfdi_demonstrators:latest pyiron/nfdi_demonstrators:"$(date +%F)"
+      - run: docker images
+      

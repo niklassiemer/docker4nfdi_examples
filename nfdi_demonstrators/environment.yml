@@ -1,0 +1,11 @@
+channels:
+- conda-forge
+dependencies:
+- nglview
+- ipympl
+- ipywidgets =7
+- pyevtk
+- pyyaml
+- ipyvtklink
+- pyvista
+- voila
