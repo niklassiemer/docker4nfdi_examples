@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
            submodules: recursive
-      - run: curl --user 8T8WHAo1NLpgAkW:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ -o dpd_data.tar.gz
+      - run: curl --user 8T8WHAo1NLpgAkW:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ > nfdi_demonstrators/dpd_data.tar.gz
       - run: docker build -t pyiron/nfdi_demonstrators:latest nfdi_demonstrators/
       - run: docker tag pyiron/nfdi_demonstrators:latest pyiron/nfdi_demonstrators:"$(date +%F)"
       - run: docker images
