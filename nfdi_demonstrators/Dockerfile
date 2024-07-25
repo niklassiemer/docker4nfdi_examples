@@ -53,7 +53,7 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
     mamba list
 
 WORKDIR ${HOME}/iuc04-demonstrator/
-RUN bash binder/download_and_install_dataset.sh
+RUN mamba run -n iuc04 binder/download_and_install_dataset.sh
 
 
 WORKDIR ${HOME}
