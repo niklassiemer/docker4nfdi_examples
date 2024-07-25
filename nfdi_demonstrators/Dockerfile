@@ -45,11 +45,11 @@ ARG PYTHON_VERSION=default
 
 COPY .  ${HOME}/
 RUN mamba env update -n base -f ${HOME}/environment.yml && \
-    mamba env create --name iuc04 ${HOME}/iuc04-demonstrator/binder/environment.yml && \
-    mamba env create --name iuc09 ${HOME}/iuc09_demonstrator/binder/environment.yml && \
-    mamba env create --name iuc17 ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml && \
-    mamba env create --name iuc17 ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml && \
-    mamba env create --name exp_wf_demo ${HOME}/experimental_workflow_demo/binder/environment.yml && \
+    mamba env create --name iuc04 -f ${HOME}/iuc04-demonstrator/binder/environment.yml && \
+    mamba env create --name iuc09 -f ${HOME}/iuc09_demonstrator/binder/environment.yml && \
+    mamba env create --name iuc17 -f ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml && \
+    mamba env create --name iuc17 -f ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml && \
+    mamba env create --name exp_wf_demo -f ${HOME}/experimental_workflow_demo/binder/environment.yml && \
     mamba clean --all -f -y && \
     mamba list
 
