@@ -52,10 +52,11 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
     mamba clean --all -f -y && \
     mamba list
 
-RUN mkdir iuc04-demonstrator/DPD_Data && \
-    mv dpd_data.tar.gz iuc04-demonstrator/DPD_Data && \ 
-    cd iuc04-demonstrator/DPD_Data && \
-    mamba run -n iuc04 ../binder/install_dataset.sh
+RUN mkdir iuc04-demonstrator/DPD_Data 
+    # need to download this inside the running container
+    # mv dpd_data.tar.gz iuc04-demonstrator/DPD_Data && \ 
+    # cd iuc04-demonstrator/DPD_Data && \
+    # mamba run -n iuc04 ../binder/install_dataset.sh
 
 
 WORKDIR ${HOME}
