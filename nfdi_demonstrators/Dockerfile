@@ -60,8 +60,8 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
 
 
 WORKDIR ${HOME}
-RUN mv iuc09_demonstrator/binder/.pyiron . && \
-    iuc09_demonstrator/pyiron . && \
+RUN cp iuc09_demonstrator/binder/.pyiron . && \
+    cp -r iuc09_demonstrator/pyiron . && \
     chmod u+x pyiron/resources/paraprobe-ranger/bin/run_paraprobe-ranger_1.0.3_mpi.sh && \
     chmod u+x pyiron/resources/paraprobe-ranger/bin/run_paraprobe-ranger_1.0.3.sh && \
     chmod u+x pyiron/resources/paraprobe-distancer/bin/run_paraprobe-distancer_1.0.3_mpi.sh && \
