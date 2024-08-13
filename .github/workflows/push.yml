@@ -21,8 +21,8 @@ jobs:
           message: ""
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-      - run: docker build -t pyiron/nfdi_demonstrators:latest nfdi_demonstrators/
-      - run: docker tag pyiron/nfdi_demonstrators:latest pyiron/nfdi_demonstrators:"$(date +%F)"
+      - run: docker build -t niklassiemer/pyiron4nfdmatwerk_examples:latest nfdi_demonstrators/
+      - run: docker tag niklassiemer/pyiron4nfdmatwerk_examples:latest niklassiemer/pyiron4nfdmatwerk_examples:"$(date +%F)"
       - run: docker images
-      - run: docker push pyiron/nfdi_demonstrators:latest
-      - run: docker push pyiron/nfdi_demonstrators:"$(date +%F)"
+      - run: docker push niklassiemer/pyiron4nfdmatwerk_examples:latest
+      - run: docker push niklassiemer/pyiron4nfdmatwerk_examples:"$(date +%F)"
