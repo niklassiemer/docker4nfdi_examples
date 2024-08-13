@@ -19,7 +19,7 @@ jobs:
           tag: ${{ steps.date.outputs.date }}
           tag_exists_error: false
           message: ""
-          github_token: ${{ secrets.docker4ndfi_PAT }}
+          github_token: ${{ secrets.DOCKER4NDFI_PAT }}
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - run: docker build -t niklassiemer/pyiron4nfdmatwerk_examples:latest nfdi_demonstrators/
