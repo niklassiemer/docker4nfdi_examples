@@ -13,7 +13,7 @@ jobs:
       - name: Get current date
         id: date
         run: echo "date=$(date +%F)" >> $GITHUB_OUTPUT
-      - uses: rickstaa/action-create-tag@v1
+      - uses: rickstaa/action-create-tag@v1.7.2
         id: "tag_create"
         with:
           tag: ${{ steps.date.outputs.date }}
