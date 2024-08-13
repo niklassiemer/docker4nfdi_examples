@@ -4,12 +4,10 @@ on: workflow_dispatch
 
 
 jobs:
-  build:
+  tag:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-           submodules: recursive
       - name: Get current date
         id: date
         run: echo "date=$(date +%F)" >> $GITHUB_OUTPUT
@@ -19,7 +17,15 @@ jobs:
           tag: ${{ steps.date.outputs.date }}
           tag_exists_error: false
           message: ""
-          github_token: ${{ secrets.DOCKER4NDFI_PAT }}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+           submodules: recursive
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +%F)" >> $GITHUB_OUTPUT
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - run: docker build -t niklassiemer/pyiron4nfdmatwerk_examples:latest nfdi_demonstrators/
