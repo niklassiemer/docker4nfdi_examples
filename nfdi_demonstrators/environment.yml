@@ -9,3 +9,4 @@ dependencies:
 - ipyvtklink
 - pyvista
 - voila
+- nb_conda_kernels
