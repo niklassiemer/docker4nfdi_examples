@@ -50,7 +50,7 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
     mamba env create --name iuc17 -f ${HOME}/IUC17_demonstrator_environment/.binder/environment.yml && \
     mamba env create --name exp_wf_demo -f ${HOME}/experimental_workflow_demo/binder/environment.yml && \
     mamba clean --all -f -y && \
-    mamba list
+    mamba list 
 
 # RUN mkdir iuc04-demonstrator/DPD_Data 
     # need to download this inside the running container
@@ -76,6 +76,7 @@ RUN cp iuc09_demonstrator/binder/.pyiron . && \
 
 # Fix permissions on /etc/jupyter as root
 USER root
+RUN python fix_nb_kernels.py
 RUN fix-permissions /etc/jupyter/ &&\
     fix-permissions ${HOME} && \
     fix-permissions $CONDA_DIR
